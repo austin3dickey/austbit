@@ -1,0 +1,9 @@
+# Rstudio stuff for some reason
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# Creds
+creds.json
