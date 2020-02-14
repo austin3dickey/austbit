@@ -5,5 +5,8 @@
 .Ruserdata
 *.Rproj
 
+# Python stuff
+*__pycache__*
+
 # Creds
 creds.json

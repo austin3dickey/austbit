@@ -4,7 +4,7 @@ import fitbit
 
 
 def creds_expiry_callback(new_creds: dict):
-    print("TIME TO REGENERATE THE CLIENT")
+    print("Gotta regenerate and save the creds again")
 
     new_creds_to_save = {
         "client_id": creds["client_id"],
@@ -18,19 +18,15 @@ def creds_expiry_callback(new_creds: dict):
     with open("creds.json", "w") as f:
         json.dump(new_creds_to_save, f, indent=4)
 
-    # Update the client
-    global CLIENT
-    CLIENT = generate_client()
-
 
 def generate_client():
     with open("creds.json", "r") as f:
         creds = json.load(f)
 
-    return fitbit.client(
+    return fitbit.Fitbit(
         **creds,
         refresh_cb=creds_expiry_callback,
         redirect_uri="http://127.0.0.1:8080/",
     )
 
-CLIENT = generate_client()
+client = generate_client()
